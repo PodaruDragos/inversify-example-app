@@ -10,21 +10,21 @@ if (configResult.error) {
 
 
 const mikroOrmConfig: Options = {
-  dbName: process.env.POSTGRE_DB,
+  dbName: process.env.POSTGRES_DB,
   debug: process.env.APP_ENV === 'development',
   entities: ['bin/entities/*.js'],
   entitiesTs: ['src/entities/*.ts'],
-  host: process.env.POSTGRE_HOST,
+  host: process.env.POSTGRES_HOST,
   migrations: {
     path: 'src/migrations/',
     tableName: 'migrationsHistory',
     transactional: true
   },
-  password: process.env.POSTGRE_PASSWORD,
-  port: Number(process.env.POSTGRE_PORT),
+  password: process.env.POSTGRES_PASSWORD,
+  port: Number(process.env.POSTGRES_PORT),
   tsNode: process.env.APP_ENV === 'development',
   type: 'postgresql',
-  user: process.env.POSTGRE_USER
+  user: process.env.POSTGRES_USER
 };
 
 export default mikroOrmConfig;

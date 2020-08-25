@@ -44,7 +44,7 @@
     "clean-install": "npm run clean && npm install",
     "lint": "tsc && eslint '*/**/*.{js,ts}' --quiet --fix",
     "start": "cross-env APP_ENV=production node ./bin/index.js",
-    "migration:create": "cross-env POSTGRE_HOST=localhost APP_ENV=production MIKRO_ORM_CLI=bin/config/mikro-orm.config.js mikro-orm migration:create"
+    "migration:create": "cross-env POSTGRES_HOST=localhost APP_ENV=production MIKRO_ORM_CLI=bin/config/mikro-orm.config.js mikro-orm migration:create"
   },
   "version": "0.0.1"
 }
