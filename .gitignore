@@ -5,7 +5,7 @@ logs/
 bin/
 
 # Config
-.env
+# Remember To Never Commit This .env
 
 # Editor Config
 .vscode/

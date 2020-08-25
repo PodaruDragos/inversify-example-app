@@ -59,7 +59,7 @@ Ports Opened
 
 ###### Stop All Containers
 ``` docker
-  docker stop `docker ps -qa
+  docker stop `docker ps -qa`
 ```
 
 ###### Remove All Containers
