@@ -1,0 +1,18 @@
+# App Logs
+logs/
+
+# Build
+bin/
+
+# Config
+.env
+
+# Editor Config
+.vscode/
+
+# Misc
+*.DS_Store
+
+# Node
+node_modules/
+npm-debug.log*

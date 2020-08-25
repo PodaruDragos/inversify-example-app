@@ -1,0 +1,51 @@
+version: '3.7'
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: server
+    command: npm run dev
+    depends_on:
+      - postgres
+    expose:
+      - '3000'
+    env_file: .env
+    image: server
+    links:
+      - postgres
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+      - '6000:6000'
+    volumes:
+      - ./src:/server/src
+
+  pgadmin:
+    container_name: pgadmin
+    depends_on:
+      - postgres
+    env_file: .env
+    image: dpage/pgadmin4
+    links:
+      - postgres
+    ports:
+      - '5050:80'
+    restart: unless-stopped
+    volumes:
+      - pgadmin:/root/.pgadmin
+
+  postgres:
+    container_name: postgres
+    env_file: .env
+    image: postgres
+    ports:
+      - '5432:5432'
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data: {}
+  pgadmin: {}

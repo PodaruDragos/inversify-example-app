@@ -1,0 +1,17 @@
+# Docker
+.dockerignore
+Dockerfile
+Dockerfile.dev
+docker-compose.yml
+
+# Git
+.git
+.gitignore
+
+# Misc
+*.DS_Store
+
+# Node
+#src/
+node_modules/
+npm-debug.log*
