@@ -8,7 +8,7 @@ import { Test } from '../entities/Test';
 
 // Utils
 import { CustomError } from '../utils/error';
-import { Logger } from '../utils/log';
+import { Logger } from '../utils/logger';
 
 // Inversify Types
 import { TYPES } from '../types';

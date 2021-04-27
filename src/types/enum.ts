@@ -1,4 +1,7 @@
 export enum TYPES_ENUM {
+  // Clients
+  DATABASE_CLIENT = 'DATABASE_CLIENT',
+
   // Connections
   DATABASE_CONNECTION = 'DATABASE_CONNECTION',
 

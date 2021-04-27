@@ -1,20 +1,26 @@
 // Packages
 import { Connection, IDatabaseDriver, MikroORM } from '@mikro-orm/core';
-import chalk from 'chalk';
 
-// Config
-import mikroOrmConfig from './mikro-orm.config';
+// Utils
+import { ProvideSingleton } from '../utils/decorator.js';
+import { Logger } from '../utils/logger.js';
+
+// Inversify Types
+import { TYPES } from '../types/index.js';
 
 
+@ProvideSingleton(TYPES.DATABASE_CLIENT)
 export class DatabaseClient {
+
+  constructor(
+    public readonly logger: Logger
+  ) { }
+
   public connect = async (): Promise<MikroORM<IDatabaseDriver<Connection>> | void> => {
     try {
-      return MikroORM.init(mikroOrmConfig);
+      return MikroORM.init();
     } catch (error) {
-      process.stdout.write(
-        chalk.redBright(`${(error as Error).message}\n`)
-      );
+      this.logger.error(error);
     }
   }
-
 }

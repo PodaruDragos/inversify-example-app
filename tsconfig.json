@@ -2,36 +2,30 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
-    "baseUrl": ".",
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "extendedDiagnostics": true,
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
-    "lib": [
-      "ESNext"
-    ],
-    "module": "CommonJS",
+    "module": "ESNext",
     "moduleResolution": "Node",
+    "noEmit": true,
     "noErrorTruncation": true,
+    "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
+    "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "bin",
-    "pretty": false,
+    "pretty": true,
     "removeComments": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "strictBindCallApply": true,
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true,
-    "target": "ES6",
+    "target": "ESNext",
     "typeRoots": [
       "node_modules/@types"
     ]
@@ -40,6 +34,6 @@
     "node_modules"
   ],
   "include": [
-    "./src/**/*.ts"
+    "./src/**/*"
   ]
 }

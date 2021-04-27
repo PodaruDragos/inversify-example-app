@@ -10,7 +10,7 @@ import { TestService } from '../services/test';
 import { Test } from 'src/entities/Test';
 
 // Utils
-import { Logger } from '../utils/log';
+import { Logger } from '../utils/logger';
 
 // Inversify Types
 import { TYPES } from '../types';
