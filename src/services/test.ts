@@ -4,14 +4,14 @@ import { provide } from 'inversify-binding-decorators';
 import { EntityRepository } from '@mikro-orm/core';
 
 // Database Entities
-import { Test } from '../entities/Test';
+import { Test } from '../entities/Test.js';
 
 // Utils
-import { CustomError } from '../utils/error';
-import { Logger } from '../utils/logger';
+import { CustomError } from '../utils/error.js';
+import { Logger } from '../utils/logger.js';
 
 // Inversify Types
-import { TYPES } from '../types';
+import { TYPES } from '../types/index.js';
 
 
 
@@ -32,7 +32,7 @@ export class TestService {
     try {
       return { tests: await this.testRepository.findAll() };
     } catch (error) {
-      this.logger.log(error, 'error');
+      this.logger.error(error);
     }
   }
 
@@ -41,7 +41,7 @@ export class TestService {
       await this.testRepository.persistAndFlush(new Test(test.test));
       return { message: 'saved' };
     } catch (error) {
-      this.logger.log(error, 'error');
+      this.logger.error(error);
       throw new CustomError('Can\'t save to database', 500);
     }
   }

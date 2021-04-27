@@ -4,16 +4,16 @@ import { inject } from 'inversify';
 import { controller, httpGet, httpPost } from 'inversify-express-utils';
 
 // Services
-import { TestService } from '../services/test';
+import { TestService } from '../services/test.js';
 
 // Database Entities
-import { Test } from 'src/entities/Test';
+import { Test } from '../entities/Test.js';
 
 // Utils
-import { Logger } from '../utils/logger';
+import { Logger } from '../utils/logger.js';
 
 // Inversify Types
-import { TYPES } from '../types';
+import { TYPES } from '../types/index.js';
 
 
 
@@ -38,7 +38,7 @@ export class TestController {
       const result = await this.testService.getTest();
       response.json(result);
     } catch (error) {
-      this.logger.log(error, 'error');
+      this.logger.error(error);
       return Promise.reject(next(error));
     }
   }
@@ -53,7 +53,7 @@ export class TestController {
       const result = await this.testService.createTest(request.body);
       response.json(result);
     } catch (error) {
-      this.logger.log(error, 'error');
+      this.logger.error(error);
       return Promise.reject(next(error));
     }
   }

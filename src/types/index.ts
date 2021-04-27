@@ -1,5 +1,5 @@
 // Enums
-import { TYPES_ENUM } from './enum';
+import { TYPES_ENUM } from './enum.js';
 
 type InversifyBinding = { [key in keyof typeof TYPES_ENUM]: symbol };
 type IndexObject = { [key: string]: symbol };

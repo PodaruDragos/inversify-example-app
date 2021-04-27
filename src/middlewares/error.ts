@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import { Request, Response, NextFunction } from 'express';
 
 // Utils
-import { CustomError } from '../utils/error';
+import { CustomError } from '../utils/error.js';
 
 
 export const handleError = (
