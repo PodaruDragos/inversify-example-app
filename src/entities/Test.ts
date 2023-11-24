@@ -7,7 +7,7 @@ export class Test {
   public id!: number;
 
   @Property()
-  public test: string
+  public test: string;
 
 
   constructor(

@@ -2,7 +2,7 @@
 logs/
 
 # Build
-bin/
+dist/
 
 # Config
 # Remember To Never Commit This .env
@@ -14,5 +14,11 @@ bin/
 *.DS_Store
 
 # Node
-node_modules/
+node_modules
 npm-debug.log*
+package-lock.json
+
+# Yarn
+yarn-debug.log*
+yarn-error.log*
+yarn.lock

@@ -1,5 +1,5 @@
 {
-  "exec": "nodemon --exec node --inspect=0.0.0.0:6000 --require ts-node/register",
+  "exec": "node --inspect=0.0.0.0:6000 --loader ts-node/esm",
   "ext": "js,ts",
   "ignore": [
     ".git",

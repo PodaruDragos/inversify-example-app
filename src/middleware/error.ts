@@ -1,16 +1,18 @@
 // Packages
+import { ValidationError } from '@mikro-orm/postgresql';
 import chalk from 'chalk';
-import { Request, Response, NextFunction } from 'express';
+import { type Request, type Response } from 'express';
 
 // Utils
-import { CustomError } from '../utils/error';
+import { CustomError } from '../utils/error.util.js';
+import { Logger } from '../utils/logger.util.js';
 
 
 export const handleError = (
   error: Error | CustomError,
+  logger: Logger,
   request: Request,
-  response: Response,
-  _next: NextFunction
+  response: Response
 ): void => {
   const errorMessage = `
     ----------------------------------
@@ -20,11 +22,15 @@ export const handleError = (
     REQUEST BODY: ${JSON.stringify(request.body)}
     STATUS: ${error instanceof CustomError ? error.status : response.statusCode}
     MESSAGE: ${error.message}
-    STACK: ${error.stack as string}
+    STACK: ${error.stack ?? ''}
     ----------------------------------
   `;
 
-  process.stdout.write(chalk.redBright(errorMessage));
+  // Logs In Console Only In Development Mode
+  if (process.env['NODE_ENV'] === 'development') {
+    process.stdout.write(chalk.redBright(errorMessage));
+  }
+
   if (error instanceof CustomError) {
     response
       .status(error.status)
@@ -33,6 +39,14 @@ export const handleError = (
         status: error.status
       });
   } else {
-    response.status(500).json({ error: 'Internal server error' });
+    // Logs Database Exceptions
+    if (error instanceof ValidationError) {
+      logger.error(error);
+    }
+    response
+      .status(500)
+      .json({
+        error: 'Internal Server Error'
+      });
   }
 };
